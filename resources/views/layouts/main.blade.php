@@ -1,16 +1,17 @@
 <!doctype html>
-
 <html lang="en">
-<head>
-    <meta charset="utf-8">
 
-    <title>{{ $title }}</title>
-    <meta name="description" content="Employees management application">
-    <meta name="author" content="BoomTech">
-
-</head>
+@include("components.head")
 
 <body>
-@yield("content")
+<div class="container-fluid">
+    <div class="col-8">
+        @yield("content")
+    </div>
+    <div class="col-4">
+        @include("components.sidebar")
+    </div>
+</div>
+@include("components.scripts")
 </body>
 </html>
