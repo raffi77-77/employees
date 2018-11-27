@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $('#add_employee').on('submit', function (e) {
 
-
         e.preventDefault();
         var form = $(this);
 
@@ -12,6 +11,15 @@ $(document).ready(function () {
         } ).done(function (e) {
             console.log(e)
         });
+    });
+
+    $.dobPicker({
+        daySelector: '#dobday',
+        monthSelector: '#dobmonth',
+        yearSelector: '#dobyear',
+        dayDefault: 'Day',
+        monthDefault: 'Month',
+        yearDefault: 'Year'
     });
 });
 

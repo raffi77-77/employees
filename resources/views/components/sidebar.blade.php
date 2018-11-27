@@ -9,6 +9,12 @@
             <label for="inputSurname">Surname</label>
             <input type="text" class="form-control" id="inputSurname" name="surname" placeholder="Enter surname">
         </div>
+        <div class="form-group">
+            <label for="month">Age</label>
+            <select name="date_of_birth[day]" id="dobday"></select>
+            <select name="date_of_birth[month]" id="dobmonth"></select>
+            <select name="date_of_birth[year]" id="dobyear"></select>
+        </div>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="gender" id="inputGender1" value="male">
             <label class="form-check-label" for="inputGender1">

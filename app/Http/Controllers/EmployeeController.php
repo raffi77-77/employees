@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {
@@ -11,13 +13,24 @@ class EmployeeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function store(Request $request)
     {
-        $this->validate($request);
+        $this->validator($request);
 
+        $employee = $request->all();
+        unset($employee['_token']);
+        unset($employee['_token']);
 
+        $tmp_date = $employee['date_of_birth']['day'] . '/'
+            . $employee['date_of_birth']['month'] . '/'
+            . $employee['date_of_birth']['year'];
+
+        $employee['date_of_birth'] = Carbon::createFromFormat('d/m/Y', $tmp_date);
+
+        Employee::create($employee);
+        exit;
     }
 
 
@@ -51,14 +64,16 @@ class EmployeeController extends Controller
      * @param Request $request
      * @return void
     */
-    private function validate(Request $request){
+    public function validator(Request $request){
         $request->validate([
             'name' => 'string|required',
             'surname' => 'string|required',
-            'age' => 'integer|required',
             'gender' => 'string|required|in:male,female',
             'position' => 'string|required|in:accountant,engineer,doctor',
-            'salary' => 'integer|required'
+            'salary' => 'integer|required',
+            'date_of_birth.day' => 'integer|required',
+            'date_of_birth.month' => 'integer|required',
+            'date_of_birth.year' => 'integer|required',
         ]);
     }
 }
