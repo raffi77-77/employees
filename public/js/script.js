@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+    $('.full_height > .row').css('height', window.innerHeight);
+
     $('#add_employee').on('submit', function (e) {
 
         e.preventDefault();

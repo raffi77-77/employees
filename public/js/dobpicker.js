@@ -18,9 +18,9 @@ jQuery.extend({
         if (typeof(params.maximumAge) === 'undefined') params.maximumAge = 80;
 
         // set the default messages
-        $(params.daySelector).append('<option value="">' + params.dayDefault + '</option>');
-        $(params.monthSelector).append('<option value="">' + params.monthDefault + '</option>');
-        $(params.yearSelector).append('<option value="">' + params.yearDefault + '</option>');
+        // $(params.daySelector).append('<option value="">' + params.dayDefault + '</option>');
+        // $(params.monthSelector).append('<option value="">' + params.monthDefault + '</option>');
+        // $(params.yearSelector).append('<option value="">' + params.yearDefault + '</option>');
 
         // populate the day select
         for (i = 1; i <= 31; i++) {
@@ -29,19 +29,34 @@ jQuery.extend({
         }
 
         // populate the month select
+        // var months = [
+        //     "January",
+        //     "February",
+        //     "March",
+        //     "April",
+        //     "May",
+        //     "June",
+        //     "July",
+        //     "August",
+        //     "September",
+        //     "October",
+        //     "November",
+        //     "December"
+        // ];
+
         var months = [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
         ];
 
         for (i = 1; i <= 12; i++) {

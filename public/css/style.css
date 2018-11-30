@@ -1,0 +1,146 @@
+.no_padding {
+    padding: 0 !important;
+}
+
+.content_block {
+    background-color: #F3F4F8;
+}
+
+.sidebar_block {
+    background: #1e5799;
+    background: -moz-linear-gradient(left, #1e5799 0%, #207cca 0%, #28bdf2 0%, #0993eb 100%);
+    background: -webkit-linear-gradient(left, #1e5799 0%,#207cca 0%,#28bdf2 0%,#0993eb 100%);
+    background: linear-gradient(to right, #1e5799 0%,#207cca 0%,#28bdf2 0%,#0993eb 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#0993eb',GradientType=1 );
+}
+
+#sidebar form .title {
+    display: block;
+    color: #414141;
+    font-family: arial;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+
+#sidebar form input[type=text],
+#sidebar form input[type=number],
+#sidebar form select {
+    height: 32px;
+    border-radius: 0;
+    border: none;
+    color: #787878;
+}
+
+#sidebar form select {
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}
+
+#sidebar form .dob_fields select {
+    width: 70%;
+}
+
+#sidebar form .dob_fields select#dobyear {
+    width: 100%;
+}
+
+#sidebar form .dob_fields small {
+    font-size: 10px;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+#sidebar form .salary_symbol {
+    position: relative;
+}
+
+#sidebar form .salary_symbol:before {
+    content: '$';
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    z-index: 1;
+    color: #787878;
+}
+
+#sidebar form #inputSalary {
+    padding-left: 22px;
+}
+
+#sidebar form .form-check {
+    padding-left: 10px;
+    display: block;
+    clear: both;
+    float: left;
+}
+
+#sidebar form .form-check label {
+    color: #787878;
+    width: 85px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+
+
+.cont {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.cont input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cont:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.cont input:checked ~ .checkmark {
+    background-color: #FFFFFF;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.cont input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.cont .checkmark:after {
+    top: 3px;
+    right: 3px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #787878;
+}

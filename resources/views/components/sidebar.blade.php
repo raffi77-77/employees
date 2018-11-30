@@ -1,34 +1,52 @@
-<div id="sidebar">
+<div id="sidebar" class="align-self-center col-10 mx-auto">
     <form action="{{ route('employee.store') }}" id="add_employee" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="_token">
         <div class="form-group">
-            <label for="inputName">Name</label>
-            <input type="text" class="form-control" id="inputName" name="name" placeholder="Enter name">
+            <label for="inputName" class="title">Name</label>
+            <input type="text" class="form-control" id="inputName" name="name">
         </div>
         <div class="form-group">
-            <label for="inputSurname">Surname</label>
-            <input type="text" class="form-control" id="inputSurname" name="surname" placeholder="Enter surname">
+            <label for="inputSurname" class="title">Surname</label>
+            <input type="text" class="form-control" id="inputSurname" name="surname">
         </div>
         <div class="form-group">
-            <label for="month">Age</label>
-            <select name="date_of_birth[day]" id="dobday"></select>
-            <select name="date_of_birth[month]" id="dobmonth"></select>
-            <select name="date_of_birth[year]" id="dobyear"></select>
+            <label for="month" class="title">Age</label>
+            <div class="row dob_fields">
+                <div class="col">
+                    <select name="date_of_birth[month]" class="form-control" id="dobmonth" aria-describedby="monthHelp"></select>
+                    <small id="monthHelp" class="form-text text-muted">Month</small>
+                </div>
+                <div class="col">
+                    <select name="date_of_birth[day]" class="form-control" id="dobday" aria-describedby="dayHelp"></select>
+                    <small id="dayHelp" class="form-text text-muted">Day</small>
+                </div>
+                <div class="col">
+                    <select name="date_of_birth[year]" class="form-control" id="dobyear" aria-describedby="yearHelp"></select>
+                    <small id="yearHelp" class="form-text text-muted">Year</small>
+                </div>
+            </div>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="gender" id="inputGender1" value="male">
-            <label class="form-check-label" for="inputGender1">
-                Male
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="gender" id="inputGender2" value="female">
-            <label class="form-check-label" for="inputGender2">
-                Female
-            </label>
+        <label class="title">Gender</label>
+        <div class="cont">
+            <div class="form-check">
+                <label class="form-check-label" for="inputGender1">
+                    Male
+
+                    <input class="form-check-input" type="radio" name="gender" id="inputGender1" value="male" checked>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="inputGender2">
+                    Female
+
+                    <input class="form-check-input" type="radio" name="gender" id="inputGender2" value="female">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
         </div>
         <div class="form-group">
-            <label for="inputPosition">Position</label>
+            <label for="inputPosition" class="title">Position</label>
             <select class="form-control" id="inputPosition" name="position">
                 <option value="accountant">Accountant</option>
                 <option value="engineer">Engineer</option>
@@ -36,8 +54,10 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="inputSalary">Salary</label>
-            <input type="number" class="form-control" id="inputSalary" name="salary" placeholder="$">
+            <label for="inputSalary" class="title">Salary</label>
+            <div class="salary_symbol">
+                <input type="number" class="form-control" id="inputSalary" name="salary">
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Add employee</button>
     </form>
