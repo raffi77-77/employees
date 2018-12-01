@@ -68,11 +68,11 @@ class EmployeeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function destroy($id)
     {
-        //
+        Employee::findOrFail($id)->delete();
     }
 
 
@@ -104,7 +104,7 @@ class EmployeeController extends Controller
      * @return DataTables
      */
     public function getEmployeeList(){
-        $model = Employee::query()->orderBy('salary', 'desc');
+        $model = Employee::query();
 
         return DataTables::of($model)
             ->editColumn('date_of_birth', function($model){
@@ -135,4 +135,36 @@ class EmployeeController extends Controller
         echo Employee::findOrFail($id);
     }
 
+    /**
+     * Upload file method. This method gets the file and dump the data into DB
+     *
+     * @param Request $request
+     * @return void
+    */
+    public function uploadDump(Request $request){
+        $content = file_get_contents( $request->file('file')->path() );
+        $table_fields = Employee::tableFields();
+        $employees = json_decode($content);
+
+
+        unset($table_fields[  array_search('created_at', $table_fields) ]);
+        unset($table_fields[  array_search('updated_at', $table_fields) ]);
+        unset($table_fields[  array_search('id', $table_fields) ]);
+
+        if (json_last_error() == JSON_ERROR_NONE){
+            foreach ($employees as $employee_from_dump){
+                $has_errors = false;
+                foreach ($table_fields as $table_field) {
+                    if(!array_key_exists($table_field, $employee_from_dump)){
+                        $has_errors = true;
+                        break;
+                    }
+                }
+
+                if(!$has_errors){
+                    Employee::create((array)$employee_from_dump);
+                }
+            }
+        }
+    }
 }

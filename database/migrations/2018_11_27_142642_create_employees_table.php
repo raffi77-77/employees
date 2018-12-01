@@ -17,7 +17,7 @@ class CreateEmployeesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('surname');
-            $table->timestamp('date_of_birth');
+            $table->dateTime('date_of_birth');
             $table->string('gender', 11);
             $table->string('position');
             $table->integer('salary')->unsigned();

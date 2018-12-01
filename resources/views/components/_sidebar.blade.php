@@ -61,4 +61,11 @@
         </div>
         <button type="submit" class="btn btn-primary">Add employee</button>
     </form>
+
+    <form method="post" enctype="multipart/form-data" id="dump-uploader">
+        <div class="upload-btn-wrapper">
+            <button class="btn">Upload a file</button>
+            <input type="file" name="dump" accept="application/json"  />
+        </div>
+    </form>
 </div>

@@ -50,8 +50,6 @@ $(document).ready(function () {
             $("input[value="+ employee.gender +"]").prop("checked", true);
             $("#edit_inputPosition").val( employee.position );
             $("#edit_inputSalary").val( employee.salary );
-
-
             $("#edit_employee_form").modal('show');
         });
     });
@@ -69,5 +67,42 @@ $(document).ready(function () {
             $("#edit_employee_form").modal('hide');
             employees_datatable.ajax.reload();
         });
+    });
+
+
+    $(document).on('click', '#delete_employee_action', function (event){
+        event.preventDefault();
+        var employee_id = $(this).data('id');
+        console.log(employee_id);
+        if(confirm('Are you sure?'))
+            $.ajax({
+                url:'/employee/' + employee_id,
+                type: 'delete',
+                data:{
+                    _token: _token
+                }
+            }).done(function () {
+                employees_datatable.ajax.reload();
+            });
+    });
+
+    $("#dump-uploader input").on('change', function () {
+        if( $(this).val() ){
+            var file_data = $(this).prop('files')[0];
+            var form_data = new FormData();
+            form_data.append('file', file_data);
+            form_data.append('_token', _token);
+            $.ajax({
+                url: '/employee/upload',
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post'
+            }).done(function () {
+                employees_datatable.ajax.reload();
+            });
+        }
     });
 });
