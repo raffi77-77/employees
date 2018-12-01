@@ -10,7 +10,7 @@
             @yield("content")
         </div>
         <div class="col-4 sidebar_block no_padding d-flex h-100">
-            @include("components.sidebar")
+            @include("components._sidebar")
         </div>
     </div>
 </div>

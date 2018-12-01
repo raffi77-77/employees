@@ -65,7 +65,7 @@
     color: #787878;
 }
 
-#sidebar form #inputSalary {
+#sidebar form .salary_symbol input {
     padding-left: 22px;
 }
 
