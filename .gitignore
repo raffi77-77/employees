@@ -2,4 +2,6 @@
 .env
 /vendor
 /public/storage
-/storage
+/storage/cache/*
+/storage/views/*
+/storage/sessions/*
