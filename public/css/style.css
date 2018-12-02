@@ -33,13 +33,53 @@
     color: #787878;
 }
 
-#sidebar form select {
+#sidebar form .select_box,
+#sidebar form .dob_select_box {
+    position: relative;
+}
+
+#sidebar form .select_box:after,
+#sidebar form .dob_select_box:after {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 9px solid #787878;
+    position: absolute;
+    top: 39px;
+    right: 15px;
+    content: "";
+    cursor: pointer;
+    z-index: 99;
+}
+
+#sidebar form .dob_select_box:after {
+    top: 13px;
+    right: 45%;
+}
+
+#sidebar form .dob_select_box.year:after {
+    top: 13px;
+    right: 30px;
+}
+
+#sidebar form .select_box select{
     font-size: 14px;
     letter-spacing: 0.3px;
+    cursor: pointer;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    appearance:none;
+    position: relative;
+    z-index: 98;
 }
 
 #sidebar form .dob_fields select {
     width: 70%;
+    cursor: pointer;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    appearance:none;
 }
 
 #sidebar form .dob_fields select#dobyear {
@@ -83,10 +123,7 @@
     cursor: pointer;
 }
 
-
-
-
-.cont {
+.gender_container {
     display: inline-block;
     position: relative;
     margin-bottom: 12px;
@@ -97,8 +134,7 @@
     user-select: none;
 }
 
-/* Hide the browser's default radio button */
-.cont input {
+.gender_container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -115,12 +151,11 @@
     cursor: pointer;
 }
 
-.cont:hover input ~ .checkmark {
+.gender_container:hover input ~ .checkmark {
     background-color: #ccc;
 }
 
-/* When the radio button is checked, add a blue background */
-.cont input:checked ~ .checkmark {
+.gender_container input:checked ~ .checkmark {
     background-color: #FFFFFF;
 }
 
@@ -130,13 +165,11 @@
     display: none;
 }
 
-/* Show the indicator (dot/circle) when checked */
-.cont input:checked ~ .checkmark:after {
+.gender_container input:checked ~ .checkmark:after {
     display: block;
 }
 
-/* Style the indicator (dot/circle) */
-.cont .checkmark:after {
+.gender_container .checkmark:after {
     top: 3px;
     right: 3px;
     width: 9px;
@@ -151,20 +184,261 @@
     display: inline-block;
 }
 
-.upload-btn-wrapper .btn {
-    border: 2px solid gray;
-    color: gray;
-    background-color: white;
-    padding: 8px 20px;
-    border-radius: 8px;
-    font-size: 20px;
-    font-weight: bold;
-}
-
 .upload-btn-wrapper input[type=file] {
     font-size: 100px;
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0;
+}
+
+form#dump-uploader {
+    float: right;
+    margin-top: -38px;
+}
+
+.content_block .align-self-center {
+    width: 90%;
+}
+
+.dataTables_wrapper .dataTables_scroll {
+    background-color: #FEFEFE;
+    border-radius: 14px;
+}
+
+.dataTables_wrapper table {
+    font-size: 14px;
+    background-color: #FEFEFE;
+    border: none;
+}
+
+.dataTables_wrapper table tbody td:first-child {
+    border-left: none !important;
+}
+
+.dataTables_wrapper table tbody td:last-child {
+    border-right: none !important;
+}
+
+.dataTables_wrapper table {
+    -webkit-border-bottom-left-radius: 14px;
+    -moz-border-bottom-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+    -webkit-border-bottom-right-radius: 14px;
+    -moz-border-bottom-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    border: 1px solid #EBEDEF;
+}
+
+.dataTables_scrollHead table {
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    border: 1px solid #EBEDEF !important;
+}
+
+.dataTables_scrollHead th {
+    text-transform: capitalize;
+    color: #31BCEC;
+    border: none !important;
+    padding: 15px 18px !important;
+    text-align: center;
+}
+
+.dataTables_scrollBody table,
+.dataTables_scrollBody {
+    border: none !important;
+}
+
+.dataTables_scrollBody tr:not(:last-child) td {
+    border-bottom: 1px solid #EBEDEF !important;
+}
+
+.dataTables_scrollBody tr td:first-child {
+    color: #414141;
+    font-weight: bold;
+}
+
+.dataTables_scrollBody td {
+    border: none !important;
+    text-align: center;
+    color: #787878;
+}
+
+.dataTables_scrollHead th:not(:last-child),
+.dataTables_scrollBody td:not(:last-child) {
+    border-right: 1px solid #EBEDEF !important;
+}
+
+.dataTables_scrollBody tr:last-child td {
+    padding-bottom: 20px;
+}
+
+.dataTables_scrollHead th:first-child {
+    text-transform: uppercase;
+}
+
+table.dataTable thead .sorting_asc {
+    background-image: url(../img/sort_asc.png) !important;
+}
+
+table.dataTable thead .sorting_desc {
+    background-image: url(../img/sort_desc.png) !important;
+}
+
+.dataTables_filter {
+    background-color: #fff;
+    border-radius: 14px;
+    height: 26px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 230px;
+}
+
+.dataTables_filter label:before {
+    background-image: url("../img/search-icon.png");
+    display: inline-block;
+    content: "";
+    height: 20px;
+    left: -20px;
+    position: relative;
+    top: 4px;
+    width: 20px;
+    z-index: 2;
+}
+
+.dataTables_filter label.hide_search_icon:before {
+    display: none;
+}
+
+.dataTables_filter label {
+    position: absolute;
+    color: transparent;
+    height: 100%;
+    left: 0;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+}
+
+.dataTables_filter input {
+    display: block;
+    border: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.dataTables_filter input:focus {
+    outline: none;
+}
+
+.dataTables_filter input::-webkit-input-placeholder:before {
+    content: "aaa";
+}
+
+.dataTables_filter input::-webkit-input-placeholder {
+    color: #818181;
+    transition: text-indent .4s ease;
+    -webkit-transition: text-indent .4s ease;
+    -moz-transition: text-indent .4s ease;
+    -o-transition: text-indent .4s ease;
+}
+
+.dataTables_filter input::-moz-placeholder {
+    color: #818181;
+    opacity: 1;
+    transition: text-indent .4s ease;
+    -webkit-transition: text-indent .4s ease;
+    -moz-transition: text-indent .4s ease;
+    -o-transition: text-indent .4s ease;
+}
+
+.dataTables_filter input:-ms-input-placeholder {
+    color: #818181;
+    transition: text-indent .4s ease;
+    -webkit-transition: text-indent .4s ease;
+    -moz-transition: text-indent .4s ease;
+    -o-transition: text-indent .4s ease;
+}
+
+.dataTables_filter input:-moz-placeholder {
+    color: #818181;
+    opacity: 1;
+    transition: text-indent .4s ease;
+    -webkit-transition: text-indent .4s ease;
+    -moz-transition: text-indent .4s ease;
+    -o-transition: text-indent .4s ease;
+}
+
+
+.dataTables_filter input:focus::-webkit-input-placeholder {
+    text-indent: 250px;
+}
+
+.dataTables_filter input:focus::-moz-placeholder {
+    text-indent: 250px;
+}
+
+.dataTables_filter input:focus:-ms-input-placeholder {
+    text-indent: 250px;
+}
+
+.dataTables_filter input:focus:-moz-placeholder {
+    text-indent: 250px;
+}
+
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-base-color: #139ae7;
+    scrollbar-3dlight-color: #fff;
+    scrollbar-highlight-color: #139ae7;
+    scrollbar-track-color: #E9E9E9;
+    scrollbar-arrow-color: #139ae7;
+    scrollbar-shadow-color: #139ae7;
+    scrollbar-dark-shadow-color: #139ae7;
+}
+
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody::-webkit-scrollbar-thumb,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBodyblock::-webkit-scrollbar-track,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody::-webkit-scrollbar {
+    border-radius: 3px;
+    height: 6px;
+    width: 6px;
+}
+
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody::-webkit-scrollbar-track {
+    background-color: #E9E9E9;
+}
+
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody::-webkit-scrollbar-thumb {
+    background-color: #139ae7;
+}
+
+.upload-btn {
+    display: none;
+}
+
+#datatable_table_length select,
+#datatable_table_length select:focus {
+    border: none !important;
+    border-radius: 14px;
+}
+
+#datatable_table_length,
+#datatable_table_length select,
+#datatable_table_filter input {
+    color: #787878;
+}
+
+.table-striped tbody tr {
+    background-color: transparent !important;
 }

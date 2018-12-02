@@ -1,7 +1,6 @@
 @extends("layouts.main")
 
 @section("content")
-    {{ $title }}
 
     <table id="datatable_table" class="table table-striped table-bordered" cellspacing="0">
         <thead>

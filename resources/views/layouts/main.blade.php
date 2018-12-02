@@ -6,8 +6,10 @@
 <body>
 <div class="container-fluid full_height">
     <div class="row">
-        <div class="col-8 content_block no_padding">
-            @yield("content")
+        <div class="col-8 content_block no_padding d-flex h-100">
+            <div class="align-self-center mx-auto">
+                @yield("content")
+            </div>
         </div>
         <div class="col-4 sidebar_block no_padding d-flex h-100">
             @include("components._sidebar")

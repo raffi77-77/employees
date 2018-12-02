@@ -12,22 +12,22 @@
         <div class="form-group">
             <label for="month" class="title">Age</label>
             <div class="row dob_fields">
-                <div class="col">
+                <div class="col dob_select_box">
                     <select name="date_of_birth[month]" class="form-control" id="dobmonth" aria-describedby="monthHelp"></select>
                     <small id="monthHelp" class="form-text text-muted">Month</small>
                 </div>
-                <div class="col">
+                <div class="col dob_select_box">
                     <select name="date_of_birth[day]" class="form-control" id="dobday" aria-describedby="dayHelp"></select>
                     <small id="dayHelp" class="form-text text-muted">Day</small>
                 </div>
-                <div class="col">
+                <div class="col dob_select_box year">
                     <select name="date_of_birth[year]" class="form-control" id="dobyear" aria-describedby="yearHelp"></select>
                     <small id="yearHelp" class="form-text text-muted">Year</small>
                 </div>
             </div>
         </div>
         <label class="title">Gender</label>
-        <div class="cont">
+        <div class="gender_container">
             <div class="form-check">
                 <label class="form-check-label" for="inputGender1">
                     Male
@@ -45,7 +45,7 @@
                 </label>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group select_box">
             <label for="inputPosition" class="title">Position</label>
             <select class="form-control" id="inputPosition" name="position">
                 <option value="accountant">Accountant</option>
@@ -64,8 +64,8 @@
 
     <form method="post" enctype="multipart/form-data" id="dump-uploader">
         <div class="upload-btn-wrapper">
-            <button class="btn">Upload a file</button>
-            <input type="file" name="dump" accept="application/json"  />
+            <label for="upload-btn" class="btn btn-primary">Upload a file</label>
+            <input class="upload-btn" id="upload-btn" type="file" name="dump" accept="application/json"  />
         </div>
     </form>
 </div>

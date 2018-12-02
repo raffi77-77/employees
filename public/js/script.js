@@ -105,4 +105,12 @@ $(document).ready(function () {
             });
         }
     });
+
+    $('.dataTables_wrapper #datatable_table_filter input').on('focus', function () {
+        $('.dataTables_filter label').addClass('hide_search_icon');
+    });
+
+    $('.dataTables_wrapper #datatable_table_filter input').on('blur', function () {
+        $('.dataTables_filter label').removeClass('hide_search_icon');
+    });
 });

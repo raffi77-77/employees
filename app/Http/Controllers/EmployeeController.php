@@ -113,6 +113,9 @@ class EmployeeController extends Controller
 
                 return $date->diffInYears($now);
             })
+            ->editColumn('salary', function($model){
+                return $model->salary . '$';
+            })
             ->addColumn('actions', function($model){
                 return view('components._actions')
                     ->with([
@@ -120,7 +123,7 @@ class EmployeeController extends Controller
                     ])
                     ->render();
             })
-            ->rawColumns(['date_of_birth', 'actions'])
+            ->rawColumns(['date_of_birth', 'salary', 'actions'])
             ->make(true);
     }
 
