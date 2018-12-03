@@ -19,3 +19,4 @@
     @include('components._datatables_init')
     @include('components._edit_form')
 @endsection
+@include('components._loader')

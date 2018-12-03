@@ -87,7 +87,7 @@ class EmployeeController extends Controller
             'name' => 'string|required',
             'surname' => 'string|required',
             'gender' => 'string|required|in:male,female',
-            'position' => 'string|required|in:accountant,engineer,doctor',
+            'position' => 'string|required',
             'salary' => 'integer|required',
             'date_of_birth.day' => 'integer|required',
             'date_of_birth.month' => 'integer|required',

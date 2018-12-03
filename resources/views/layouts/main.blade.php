@@ -12,6 +12,8 @@
             </div>
         </div>
         <div class="col-4 sidebar_block no_padding d-flex h-100">
+            <div class="col-12 h-100 top_gradient"></div>
+            <div class="col-12 bottom_gradient"></div>
             @include("components._sidebar")
         </div>
     </div>

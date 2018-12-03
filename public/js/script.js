@@ -1,17 +1,25 @@
 $(document).ready(function () {
 
     $('.full_height > .row').css('height', window.innerHeight);
+    $('.bottom_gradient').css('height', window.innerHeight * 2);
+
+    $('.dataTables_scrollBody #datatable_table td').hover(function () {
+        // $(this).parent().css('background', '#EBEDEF');
+        $(this).parent().addClass("bbbb");
+    });
 
     $('#add_employee').on('submit', function (event) {
         event.preventDefault();
         var form = $(this);
-
+        $('#wait_loading').show();
         $.ajax( {
             type: "POST",
             url: form.attr( 'action' ),
             data: form.serialize(),
         }).done(function () {
             employees_datatable.ajax.reload();
+            $('#add_employee')[0].reset();
+            setTimeout(function(){$('#wait_loading').hide()}, 2000);
         });
     });
 
@@ -58,7 +66,7 @@ $(document).ready(function () {
     $("#edit_employee").on('submit', function (event) {
         event.preventDefault();
         var form = $(this);
-
+        $('#wait_loading').show();
         $.ajax( {
             type: form.attr( 'method' ),
             url: form.attr( 'action' ),
@@ -66,6 +74,7 @@ $(document).ready(function () {
         }).done(function () {
             $("#edit_employee_form").modal('hide');
             employees_datatable.ajax.reload();
+            setTimeout(function(){$('#wait_loading').hide()}, 2000);
         });
     });
 
@@ -74,7 +83,7 @@ $(document).ready(function () {
         event.preventDefault();
         var employee_id = $(this).data('id');
         console.log(employee_id);
-        if(confirm('Are you sure?'))
+        if(confirm('Are you sure you want to delete?'))
             $.ajax({
                 url:'/employee/' + employee_id,
                 type: 'delete',
@@ -92,6 +101,7 @@ $(document).ready(function () {
             var form_data = new FormData();
             form_data.append('file', file_data);
             form_data.append('_token', _token);
+            $('#wait_loading').show();
             $.ajax({
                 url: '/employee/upload',
                 dataType: 'text',
@@ -102,6 +112,7 @@ $(document).ready(function () {
                 type: 'post'
             }).done(function () {
                 employees_datatable.ajax.reload();
+                setTimeout(function(){$('#wait_loading').hide()}, 2000);
             });
         }
     });
@@ -113,4 +124,20 @@ $(document).ready(function () {
     $('.dataTables_wrapper #datatable_table_filter input').on('blur', function () {
         $('.dataTables_filter label').removeClass('hide_search_icon');
     });
+
+    setTimeout(function () {
+        var positions_array = [];
+        $.each($('#datatable_table tbody tr'), function(key, value) {
+            var current_position = $(this).find('td:nth-child(6)').text();
+
+            if (jQuery.inArray(current_position, positions_array) == -1) {
+                positions_array.push(current_position);
+            }
+        });
+
+        $.each(positions_array, function(key, value) {
+            $('.select_box select').append('<option value="'+ value +'" >'+ value +'</option>');
+        });
+    }, 3000);
+
 });
